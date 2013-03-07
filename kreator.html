@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="lt-ie9"> <![endif]-->
+<!--[if IE 9]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<title>KREATOR TESTÓW MATEMATYCZNYCH</title>
+	<meta name="description" content=" " />
+	<meta name="keywords" content=" " />
+	<meta http-equiv="Content-Language" content="pl-PL" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="js/jquery.nestable.js"></script>
+<script>
+
+$(document).ready(function()
+{
+
+    var updateOutput = function(e)
+    {
+        var list   = e.length ? e : $(e.target),
+            output = list.data('output');
+        if (window.JSON) {
+            output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+        } else {
+            output.val('JSON browser support required for this demo.');
+        }
+    };
+
+    // activate Nestable for list 1
+    $('#nestable').nestable({
+        group: 1
+    })
+    .on('change', updateOutput);
+    
+    // activate Nestable for list 2
+    $('#nestable2').nestable({
+        group: 1
+    })
+    .on('change', updateOutput);
+
+    // output initial serialised data
+    updateOutput($('#nestable').data('output', $('#nestable-output')));
+    updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+
+    $('#nestable-menu').on('click', function(e)
+    {
+        var target = $(e.target),
+            action = target.data('action');
+        if (action === 'expand-all') {
+            $('.dd').nestable('expandAll');
+        }
+        if (action === 'collapse-all') {
+            $('.dd').nestable('collapseAll');
+        }
+    });
+
+    $('#nestable3').nestable();
+
+});
+</script>
+</head>
+<body>
+	<div id="gora">
+		<div id="gora_kontener">
+			<div id="logo"><p><span>KREATOR</span>TESTÓW<span>.PL</span></p></div>
+			<div id="menu">
+				<ul>
+				<li><a href="index.html">STRONA GŁÓWNA</a></li>
+				<li><a href="kreator.html">KREATOR TESTÓW</a></li>
+				<li><a href="instrukcja.html">INSTRUKCJA OBSŁUGI</a></li>
+				<li><a href="kontakt.html">KONTAKT</a></li>
+			</ul>
+			</div>
+		</div>
+	</div>
+	<div id="wysrodkowany">
+		<div id="naglowek">
+			<div id="naglowek_lewy">
+				<div id="dane_nauczyciela">
+				<p><b>Login:</b> nauczyciel01</p>
+				<p><b>Imie:</b> Piotr</p>
+				<p><b>Nazwisko:</b> Nowak</p>
+				<p><b>Szkoła:</b> ZSK w Poznaniu</p>
+				
+				</div>
+				<div id="opcje">
+				<p><a href="#">Edycja danych</a></p>
+				<p><a href="#">Moja pytania</a></p>
+				<p><a href="#">Moje testy</a></p>
+				<p><a href="#">Dziennik ocen</a></p>
+				</div>
+			</div>
+			<div id="naglowek_prawy">
+				<form action="...">
+					<p><b>Zaloguj się:</b></p>
+					<ol>
+						<li>
+							<label for="name">Login</label>
+							<input type="text" name="name" id="name" />
+						</li>
+						<li>
+							<label for="password">Hasło</label>
+							<input type="password" name="password" id="password" />
+						</li>
+						<li>
+							<button type="submit" id="send">Zaloguj</button>
+						</li>
+					</ol>
+					<center><p><a href="#">Zapominiałem hasło</a> | <a href="#">Nie mam jeszcze konta</a></p></center>
+				</form>
+			</div>
+			<div id="naglowek_dol"></div>
+		</div>
+		<div id="zawartosc_wlasciwa">
+			<div id="pytania">
+					<h1><span>KREATOR TESTÓW</span></h1>	
+					<br /><br />
+		
+	<menu id="nestable-menu">
+		<button type="button" data-action="expand-all">Rozwiń liste</button>
+        <button type="button" data-action="collapse-all">Zwiń liste</button>
+		<a href="zad.html"><button type="button">Dodaj zadanie</button></a>
+		
+    </menu>
+
+    <div class="cf nestable-lists">
+
+        <div class="dd" id="nestable">
+            <ol class="dd-list">
+                <li class="dd-item" data-id="1">
+                    <div class="dd-handle">Funkcja i jej własności</div>
+                </li>
+                <li class="dd-item" data-id="2">
+                    <div class="dd-handle">Liczby i wyrażenia algebraiczne</div>
+                    <ol class="dd-list">
+                        <li class="dd-item" data-id="3"><div class="dd-handle">Liczby naturalne,całkowite, wymierne...</div></li>
+                        <li class="dd-item" data-id="4"><div class="dd-handle">Działąnia na ułamkach</div></li>
+                        <li class="dd-item" data-id="5">
+                            <div class="dd-handle">Najwiekszy wspólny dzielnik</div>
+                            <ol class="dd-list">
+                                <li class="dd-item" data-id="6"><div class="dd-handle">Dokończ zdanie tak, aby otrzymać zdanie prawdziwe. 
+								Jeżeli długość każdej krawędzi podstawy ostrosłupa prawidłowego czworokątnego zwiększymy 2 razy, a jego wysokość zmniejszymy 2 razy, to objętość ostrosłupa<br />
+								A) zwiększy się czterokrotnie.<br /> 
+								B) zwiększy się dwukrotnie. <br />
+								C) zmniejszy się dwukrotnie. <br />
+								D) nie zmieni się.
+								</div></li>
+                                <li class="dd-item" data-id="7"><div class="dd-handle">Na zakup biletów do kina klasa 3a zebrała 360 zł, klasy 3b i 3c po 300 zł, a klasa 3d – 240 zł. Szkole udzielono rabatu i wszystkie bilety kosztowały 1000 zł. Uzyskany rabat podzielono między cztery klasy proporcjonalnie do zebranych kwot. Jaką kwotę zwrócono klasie 3a? Zapisz obliczenia.</div></li>
+                                <li class="dd-item" data-id="8"><div class="dd-handle">W pewnej kawiarni podaje się klientom dziennie średnio 70 ﬁliżanek kawy. Ze 100 g ziarnistej kawy można przygotować 22 ﬁliżanki tego napoju.
+								Ile co najmniej półkilogramowych paczek kawy musi kupić właściciel, aby wystarczyło jej na 7 dni? Wybierz odpowiedź spośród podanych. 
+								<br />A) 3 B) 4 C) 5 D) 6
+								</div></li>
+                            </ol>
+                        </li>
+                        <li class="dd-item" data-id="9"><div class="dd-handle">Usuwanie niewymierności z mianownika</div></li>
+                        <li class="dd-item" data-id="10"><div class="dd-handle">Przybliżenia liczb dziesietnych</div></li>
+						<li class="dd-item" data-id="10"><div class="dd-handle">Liczby w systemie rzymskim do 3000</div></li>
+                    </ol>
+                </li>
+                <li class="dd-item" data-id="11">
+                    <div class="dd-handle">Przybliżenia liczb dziesietnych</div>
+                </li>
+                <li class="dd-item" data-id="12">
+                    <div class="dd-handle">Usuwanie niewymierności z mianownika</div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="dd" id="nestable2">
+            <ol class="dd-list">
+                <li class="dd-item" data-id="13">
+                    <div class="dd-handle">Nazwa testu</div>
+                </li>
+                <li class="dd-item" data-id="14">
+                    <div class="dd-handle">Imię Nazwisko</div>
+                </li>
+            </ol>
+        </div>
+
+    </div>
+				
+				<br />
+				<label for="name">Nazwa testu:</label>
+		<input type="text" name="name" id="name" />
+		<label for="name">Ilość grup:</label>
+		<select name="jezyk" size="1">
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		</select>
+		<label for="name">Ustaw czas:</label>
+		<input type="text" name="name" value="00:00" id="name" /><br />
+		<button type="button">Zapisz</button>
+        <button type="button">Podgląd wydruku</button>
+		<button type="button">Drukuj</button>
+		<button type="button">Zapisz w formie online</button>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			<!--	
+				<div id="example-two">
+					
+    		<ul class="nav">
+                <li class="nav-one"><a href="#featured2" class="current">Klasa I</a></li>
+                <li class="nav-two"><a href="#core2">Klasa II</a></li>
+                <li class="nav-three"><a href="#jquerytuts2">Klasa III</a></li>
+                <li class="nav-four last"><a href="#classics2">Klasa IV</a></li>
+            </ul>
+    		
+    		<div class="list-wrap">
+    		
+    			<ul id="featured2">
+    				<li><a href="#">Full Page Background Images</a></li>
+    				<li><a href="#">Designing for WordPress</a></li>
+    				<li><a href="#">Build Your Own Social Home!</a></li>
+    				<li><a href="#">Absolute Positioning Inside Relative Positioning</a></li>
+    				<li><a href="#">IE CSS Bugs That'll Get You Every Time</a></li>
+    				<li><a href="#">404 Best Practices</a></li>
+    				<li><a href="#">Date Display with Sprites</a></li>
+    			</ul>
+        		 
+        		 <ul id="core2" class="hide">
+                    <li><a href="#">The VERY Basics of HTML &amp; CSS</a></li>
+                    <li><a href="#">Classes and IDs</a></li>
+                    <li><a href="#">The CSS Box Model</a></li>
+                    <li><a href="#">All About Floats</a></li>
+                    <li><a href="#">CSS Overflow Property</a></li>
+    				<li><a href="#">CSS Font Size - (px - em - % - pt - keyword)</a></li>
+    				<li><a href="#">CSS Transparency / Opacity</a></li>
+    				<li><a href="#">CSS Sprites</a></li>
+    				<li><a href="#">CSS Image Replacement</a></li>
+        		 	<li><a href="#">CSS Vertial Align</a></li>
+    				<li><a href="#">The CSS Overflow Property</a></li>
+        		 </ul>
+        		 
+        		 <ul id="jquerytuts2" class="hide">
+        		    <li><a href="#">Full Page Background Images</a></li>
+    				<li><a href="#">Designing for WordPress</a></li>
+    				<li><a href="#">Build Your Own Social Home!</a></li>
+    				<li><a href="#">Absolute Positioning Inside Relative Positioning</a></li>
+    				<li><a href="#">IE CSS Bugs That'll Get You Every Time</a></li>
+    				<li><a href="#">404 Best Practices</a></li>
+    				<li><a href="#">Date Display with Sprites</a></li>
+					</ul>
+        		 
+        		 <ul id="classics2" class="hide">
+                    <li><a href="#">Full Page Background Images</a></li>
+    				<li><a href="#">Designing for WordPress</a></li>
+    				<li><a href="#">Build Your Own Social Home!</a></li>
+    				<li><a href="#">Absolute Positioning Inside Relative Positioning</a></li>
+    				<li><a href="#">IE CSS Bugs That'll Get You Every Time</a></li>
+    				<li><a href="#">404 Best Practices</a></li>
+    				<li><a href="#">Date Display with Sprites</a></li>
+					</ul>
+        		 
+    		 </div> 
+		 </div>
+		 </div>
+				-->
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			<div id="tresc_dol"></div>	
+		</div>
+		<div id="stopka">
+			<div id="stopka_gora">
+				<p>Wszystkie Prawa Zastrzeżone © <a href="index.html">Matematyka.pl</a> </p>
+			</div>
+			<div id="stopka_dol"></div>
+		</div>
+	</div>
+</body>
+</html>
