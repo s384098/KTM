@@ -54,9 +54,9 @@ Class Wczytywacz
 
 Class Test
 {
-	public $Zadanie = array();
-	public $liczbaGrup;
-	public $grupy = array();
+	var $Zadanie = array();
+	var $liczbaGrup;
+	var $grupy = array();
 	public function losujNgrup()
 	{
 		
@@ -65,11 +65,11 @@ Class Test
 
 Class Zadanie
 {
-	public $tresc;
-	public $odpowiedz;
-	public $zalacznik;
-	public $num;
-	public $kategoria;
+	var $tresc;
+	var $odpowiedz;
+	var $zalacznik;
+	var $num;
+	var $kategoria;
 }
 
 Class Drukarka
@@ -79,4 +79,5 @@ Class Drukarka
 		
 		}	
 }
+
 ?>
