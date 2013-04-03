@@ -1,0 +1,61 @@
+
+//tworzenie bazy danych o nazwie iedukacja
+CREATE DATABASE kreator
+
+//tworzenie tabel
+CREATE TABLE uzytkownicy (
+iduser 				INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+imie 				VARCHAR(40),
+nazwisko 			VARCHAR(40),
+nazwa_szkoly			TEXT,
+login				VARCHAR(40),
+haslo 				VARCHAR(32),
+email 				VARCHAR(100)
+);
+
+CREATE TABLE testy (
+idtestu 			INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nazwa 				TEXT,
+nr_pytan			TEXT,
+idnauczyciela			INT
+);
+
+CREATE TABLE dzialy (
+iddzialu			INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nazwa_dzialu			TEXT
+);
+
+CREATE TABLE pytania (
+idpytania 			INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+iddzialu			INT,
+pytanie 			TEXT,
+odp1 				TEXT,
+odp2 				TEXT,
+odp3 				TEXT,
+odp4 				TEXT,
+komentarz 			TEXT
+);
+
+
+CREATE TABLE dziennik (
+iducznia			INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+idtestu 			INT,
+iduser				INT,
+wynik 				VARCHAR(10),
+nazwa_uzytkownika		TEXT
+);
+
+//Nadanie kluczy obcych
+
+ALTER TABLE `testy`  
+  ADD CONSTRAINT FOREIGN KEY (`idnauczyciela`) REFERENCES `uzytkownicy` (`iduser`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `dziennik`  
+  ADD CONSTRAINT FOREIGN KEY (`idtestu`) REFERENCES `testy` (`idtestu`) ON DELETE CASCADE ON UPDATE CASCADE,  
+  ADD CONSTRAINT FOREIGN KEY (`iduser`) REFERENCES `uzytkownicy` (`iduser`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `pytania`  
+  ADD CONSTRAINT FOREIGN KEY (`iddzialu`) REFERENCES `dzialy` (`iddzialu`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `pytania`  
+  ADD CONSTRAINT FOREIGN KEY (`idtestu`) REFERENCES `testy` (`idtestu`) ON DELETE CASCADE ON UPDATE CASCADE;

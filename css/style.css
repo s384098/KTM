@@ -1,8 +1,6 @@
 ﻿body
 {
-	margin: 0px;
-    padding: 0px;
-    border: 0px;
+	margin: 0 auto;
     text-decoration: none;
     color: #232323;  
     font-family: Arial, Verdana, Tahoma, Sans-Serif;
@@ -35,7 +33,7 @@ span
 }
 	#gora_kontener
 	{
-		margin: 0px auto;
+		margin: 0 auto;
 		width: 960px;
 		}
 		#logo
@@ -96,7 +94,7 @@ span
 			
 #wysrodkowany
 {
-    margin: 1px auto;
+    margin: 2px auto;
     width: 960px;
 }
     #naglowek
@@ -311,8 +309,11 @@ span
 		position: relative;
 		}
 	
-	
-	
+#dodawanie
+{
+	background:#232323;
+	color:#fff;
+	}
 
 
 
